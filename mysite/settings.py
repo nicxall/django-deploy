@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'database',
         'USER': 'admin',
         'PASSWORD': 'juanjc',
-        'HOST': 'localhost' ,
+        'HOST': 'note-x.onrender.com' ,
         'PORT': 5432,
     }
 }
