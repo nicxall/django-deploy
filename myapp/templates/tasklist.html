@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Task List Card</title>
+  <script src="https://kit.fontawesome.com/0c305cd8d7.js" crossorigin="anonymous"></script>
+  <style type="text/css">
+    body{
+      background-color: #1a2432;
+    }
+    
+   
+    #contenedor{
+      width: 600px;
+    }
+
+  </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="min-h-screen flex items-center justify-center">
+  <div class="bg-white shadow-md rounded-md p-8  max-w-2xl" id="contenedor">
+    <h2 class="text-2xl font-semibold mb-4">Mis Tareas - Pendientes ({{count}})</h2>
+
+    <!-- Task List -->
+    <div class="space-y-4">
+
+      <!-- Task Item (Repeat this block for each task) -->
+      {% for x in filtrar %}
+      <div class="bg-gray-100 p-4 rounded-md">
+        <div class="flex items-center justify-between border-b pb-2">
+          {% if x.date_completed %}
+          <span class="text-blue-700">{{x.title}}</span>
+            {% else %}
+              <span class="text-gray-700">{{x.title}}</span>
+          {% endif %}
+          <div class="flex space-x-2">
+            <a href="{% url 'taskdetail' x.id %}"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "><i class="fa-regular fa-pen-to-square"></i></button></a>
+
+            <a href="{% url 'deletetask' x.id %}"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-trash"></i></button></a>
+
+            <a href="{% url 'complete'  x.id %}"><button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-check"></i></button></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <!-- End Task Item -->
+
+      <!-- Repeat the above block for each task -->
+
+    </div>
+    <!-- End Task List -->
+
+   
+  </div>
+</div>
+
+
+
+</body>
+</html>
+
