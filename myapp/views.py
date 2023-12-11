@@ -45,6 +45,8 @@ def signup(request):
 					request.POST['username'], password = request.POST['password1']
 
 				)
+				registro.backend = 'django.contrib.auth.backends.ModelBackend'
+				registro.save()
 				login(request,registro)
 				return redirect('home')
 			except IntegrityError:
