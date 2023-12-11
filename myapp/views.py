@@ -49,7 +49,7 @@ def signup(request):
 		except IntegrityError:
 			return render(request,'signup.html')
 	else:
-		return redirect('signup')
+		return render(request,'signup.html')
 
 def UserCloseSession(request):
 	logout(request)
