@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+	<script src="https://kit.fontawesome.com/0c305cd8d7.js" crossorigin="anonymous"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style type="text/css">
+		body{
+			background-color: #1a2432;
+			color: #fff;
+		}
+	</style>
+<body>
+	<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+	  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+	    <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+	    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white-900">Crea tu cuenta</h2>
+	  </div>
+	  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+	  	<!--Formulario de signin -->
+	    <form class="space-y-6" action="{% url 'signup' %}" method="POST">
+	      {% csrf_token %}
+	      <div>
+	        <label for="username" class="block text-sm font-medium leading-6 text-white-900">Usuario</label>
+	        <div class="mt-2">
+	          <input id="email" name="username" type="text" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center">
+	        </div>
+	      </div>
+
+	      <div>
+	        <div class="flex items-center justify-between">
+	          <label for="password" class="block text-sm font-medium leading-6 text-white-900">Contraseña</label>
+	          
+	        </div>
+	        <div class="mt-2">
+	          <input id="password" name="password" type="password1" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center">
+	        </div>
+	      </div>
+
+          <div>
+	        <div class="flex items-center justify-between">
+	          <label for="password" class="block text-sm font-medium leading-6 text-white-900">Confirme la contraseña</label>
+	          
+	        </div>
+	        <div class="mt-2">
+	          <input id="password" name="password2" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 text-center">
+	        </div>
+	      </div>
+
+	      <div>
+	        <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
+	        <hr class="my-6 border-t border-gray-300">
+
+	        <button type="button" class="flex items-center justify-center w-full rounded-md bg-red-500 text-white px-3 py-1.5 text-sm font-semibold leading-6 shadow-sm hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-500">
+	        	<a href='{% url "social:begin" "google-oauth2" %}' class="fa-brands fa-google mr-2"></a>
+			  Sign up with Google
+			</button>
+
+
+
+	      </div>
+	    </form>
+
+	    <p class="mt-10 text-center text-sm text-gray-500">
+	      Note X
+	    </p>
+	  </div>
+	</div>
+
+
+</body>
+</html>

@@ -34,6 +34,23 @@ def UserLogin(request):
 	else:
 		return render(request,'signin.html')
 
+
+def signup(request):
+	if request.method == 'POST':
+		try:
+			if request.POST['password1'] == request.POST['password2']:
+				Createuser = User.objects.create_user(
+					request.POST['usuario'],
+					password = request.POST['password1']
+				)
+				login(request,Createuser)
+				return redirect('home')
+		
+		except IntegrityError:
+			return render(request,'signup.html')
+	else:
+		return redirect('signup')
+
 def UserCloseSession(request):
 	logout(request)
 	return redirect('signin')
