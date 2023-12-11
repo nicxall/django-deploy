@@ -51,7 +51,7 @@ def signup(request):
 				return redirect('signup')
 		
 		return render(request,'signup.html')
-
+@login_required
 def UserCloseSession(request):
 	logout(request)
 	return redirect('signin')
@@ -61,7 +61,7 @@ def home(request):
 	return render(request,'home.html',{'username': context})
 
 
-    
+@login_required
 def TaskCreate(request):
 	requestform = Formtask(request.POST)
 	if request.method == 'POST' and requestform.is_valid():
@@ -74,13 +74,13 @@ def TaskCreate(request):
 			return HttpResponse('La tarea no se pudo crear debido a un error, Vuelve a intentarlo')
 	else:
 		return render(request,'taskcreate.html')
-
+@login_required
 def Tasklist(request):
 	filtrar_task = task.objects.filter(user = request.user).order_by('-created','title')
 	getdata = task.objects.filter(date_completed__isnull = True, user = request.user)
 	count = getdata.count()
 	return render(request,'tasklist.html',{'filtrar': filtrar_task,'count': count})
-
+@login_required
 def taskdetail(request,pk):
 	if request.method == 'POST':
 		tasks = get_object_or_404(task, pk=pk)
@@ -91,12 +91,12 @@ def taskdetail(request,pk):
 		form = task.objects.get(pk=pk)
 		
 		return render(request,'taskdetail.html',{'form': form})
-
+@login_required
 def DeleteTask(request,id):
 	deletetask = task.objects.get(id=id)
 	deletetask.delete()
 	return render(request,'tasklist.html',{'context': deletetask})
-
+@login_required
 def completetask(request,pk):
 	tasks = get_object_or_404(task, pk = pk, user = request.user)
 	tasks.date_completed = timezone.now()
