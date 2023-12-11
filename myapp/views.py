@@ -36,19 +36,20 @@ def UserLogin(request):
 
 
 def signup(request):
-	if request.method == 'POST':
-		try:
-			if request.POST['password1'] == request.POST['password2']:
-				Createuser = User.objects.create_user(
-					request.POST['username'],
-					password = request.POST['password1']
-				)
-				login(request,Createuser)
-				return redirect('home')
-		
-		except IntegrityError:
-			return render(request,'signup.html')
+	if request.method != 'POST':
+		return render(request,'signup.html')
 	else:
+		if request.POST['password1'] == request.POST['password2']:
+			try:
+				registro = User.objects.create_user(
+					request.POST['username'], password = request.POST['password1']
+
+				)
+				login(request,registro)
+				return redirect('home')
+			except IntegrityError:
+				return redirect('signup')
+		
 		return render(request,'signup.html')
 
 def UserCloseSession(request):
