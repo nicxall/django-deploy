@@ -40,7 +40,7 @@ def signup(request):
 		try:
 			if request.POST['password1'] == request.POST['password2']:
 				Createuser = User.objects.create_user(
-					request.POST['usuario'],
+					request.POST['username'],
 					password = request.POST['password1']
 				)
 				login(request,Createuser)
