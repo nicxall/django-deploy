@@ -10,7 +10,7 @@ from rest_framework.authentication import JWTAuthentication
 
 class UserData (viewsets.ModelViewSet):
 	authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
+	permission_classes = [IsAuthenticated]
     def get(self, request, *args,**kwargs):
 		usuarios = User.object.all()
 		serializers = UserGet(usuarios, many=True)
