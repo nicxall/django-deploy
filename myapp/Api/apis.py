@@ -6,10 +6,10 @@ from django.shortcuts import redirect
 from rest_framework import viewsets
 from .serializers import UserGet
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import JWTAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class UserData (viewsets.ModelViewSet):
-	authentication_classes = [JWTAuthentication]
+	authentication_classes = (JWTAuthentication,)
 	permission_classes = [IsAuthenticated]
 	
 	def  get(self, request, *args , **kwargs):
