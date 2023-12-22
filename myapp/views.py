@@ -57,13 +57,11 @@ def UserCloseSession(request):
 	logout(request)
 	return redirect('signin')
 
-@login_required
 class home(TemplateView):
 	template_name = 'home.html'
 	user = User.username
 
 
-@login_required
 class TaskCreate(View):
     template_name_create = 'taskcreate.html'
     def get(self, request):
