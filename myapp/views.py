@@ -9,10 +9,9 @@ from django.http import HttpResponse
 from .forms import Formtask
 from django.contrib.auth.forms import AuthenticationForm
 from .models import task
-from django.views.generic import UpdateView
-from django.views.generic import CreateView
-from django.views.generic import DeleteView
 from django.forms import ModelForm
+from django.views.generic import TemplateView
+
 from django.utils import timezone
 
 # Create your views here.
@@ -57,10 +56,11 @@ def signup(request):
 def UserCloseSession(request):
 	logout(request)
 	return redirect('signin')
+
 @login_required
-def home(request):
-	context = request.user.username
-	return render(request,'home.html',{'username': context})
+class home(TemplateView):
+	template_name = 'home.html'
+	user = User.username
 
 
 @login_required
