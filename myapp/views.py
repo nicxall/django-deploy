@@ -64,18 +64,19 @@ def home(request):
 
 
 @login_required
-def TaskCreate(request):
-	requestform = Formtask(request.POST)
-	if request.method == 'POST' and requestform.is_valid():
-		try:
+class TaskCreate(View):
+	template_name_create = 'taskcreate.html'
+	def get(self, request):
+		return render(request, self.template_name_create)
+
+	def post(self,request):
+		requestform = Formtask(request.POST)
+		if requestform.is_valid():
 			form_valid = requestform.save(commit=False)
 			form_valid.user = request.user
 			form_valid.save()
 			return redirect('home')
-		except asyncio.CancelledError:
-			return HttpResponse('La tarea no se pudo crear debido a un error, Vuelve a intentarlo')
-	else:
-		return render(request,'taskcreate.html')
+
 @login_required
 def Tasklist(request):
 	filtrar_task = task.objects.filter(user = request.user).order_by('-created','title')
