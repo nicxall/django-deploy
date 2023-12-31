@@ -2,7 +2,6 @@ from django.urls import path
 from myapp import views
 from myapp.views import TaskCreate, home
 urlpatterns = [
-	path('', views.UserLogin, name='signin'),
 	path('signup/', views.signup , name='signup'),
 	path('accounts/logout/', views.UserCloseSession, name='logout'),
 	path('inicio/', home.as_view(), name='home'),

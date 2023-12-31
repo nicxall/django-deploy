@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('myapp.Api.urls')),
     path('', include('myapp.urls')),
     path('', include('social_django.urls', namespace='social')),
+    path('', include('data.urls')),
 
 ]

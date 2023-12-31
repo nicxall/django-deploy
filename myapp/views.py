@@ -15,25 +15,6 @@ from django.views.generic import TemplateView
 from django.utils import timezone
 
 # Create your views here.
-
-
-def UserLogin(request):
-	if request.method == 'POST':
-		try:
-			validation_data = authenticate(
-				username = request.POST['username'], password = request.POST['password']
-
-			)
-			if validation_data is None:
-				return render(request,'signin.html')
-			login(request, validation_data)
-			return redirect('home')
-		except User.DoesNotExist:
-			return HttpResponse('Tus datos no se encuentran en la base de datos')
-	else:
-		return render(request,'signin.html')
-
-
 def signup(request):
 	if request.method != 'POST':
 		return render(request,'signup.html')
