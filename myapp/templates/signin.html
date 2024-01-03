@@ -1,46 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Inicia sesion ahora para usar note-x">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0c305cd8d7.js" crossorigin="anonymous"></script>
     <link rel="icon" href="./nota.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #11101D;
+            color: #ffffff;
+        }
 
+        .card {
+            background-color: #1E1D38;
+            border: none;
+        }
+
+        .card-header {
+            background-color: #2C2B4A;
+            border-bottom: 1px solid #46455E;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .btn-primary {
+            background-color: #5865F2;
+            border-color: #5865F2;
+        }
+
+        .btn-primary:hover {
+            background-color: #6B7BFF;
+            border-color: #6B7BFF;
+        }
+
+        .btn-danger {
+            background-color: #EA4335;
+            border-color: #EA4335;
+        }
+
+        .btn-danger:hover {
+            background-color: #FF5F52;
+            border-color: #FF5F52;
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Iniciar Sesión</h3>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="inputEmail" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Correo Electrónico" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="inputPassword" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                    </form>
-                    <hr class="my-4">
-                    <a href='{% url "social:begin" "google-oauth2" %}' class="btn btn-danger btn-block">
-                        <i class="fa fa-google mr-2"></i> Iniciar Sesión con Google
-                    </a>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Iniciar Sesión</h3>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="inputEmail"
+                                    placeholder="Correo Electrónico" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputPassword" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
+                                    required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        </form>
+                        <hr class="my-4">
+                        <a href='{% url "social:begin" "google-oauth2" %}' class="btn btn-danger btn-block">
+                            <i class="fa fa-google mr-2"></i> Iniciar Sesión con Google
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 </body>
 </html>
