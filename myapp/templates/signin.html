@@ -4,49 +4,9 @@
   <meta charset="UTF-8">
   <meta name="description" content="Inicia sesion ahora para usar note-x">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <script src="https://kit.fontawesome.com/0c305cd8d7.js" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
   <title>Login</title>
-  <style>
-    body {
-      background-color: #1a2432;
-    }
-
-    .container {
-      margin-top: 100px;
-      background-color: #1a2432;
-      color: white;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .card {
-      border: none;
-      border-radius: 10px;
-    }
-
-    .card-header {
-      background-color: #1a2432;
-      color: white;
-      text-align: center;
-      border-radius: 10px 10px 0 0;
-    }
-
-    .btn-google {
-      background-color: #dc3545;
-      color: white;
-    }
-    .btn-google:hover{
-      color: #ffff;
-
-    }
-
-    .card-body{
-      background-color: #1a2432;
-    }
-  </style>
+  <link rel="icon" href="./nota.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -59,26 +19,16 @@
         </div>
         <div class="card-body">
           <form action="{% url 'signinapi' %}" method="POST">
-			{% csrf_token %}
+            {% csrf_token %}
             <div class="form-group">
               <label for="username">Usuario</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-user"></i></span>
-                </div>
-                <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" name="username" required>
-              </div>
+              <input type="text" class="form-control" id="username" placeholder="Ingrese su usuario" name="username" required>
             </div>
             <div class="form-group">
               <label for="password">Contraseña</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                </div>
-                <input type="password" class="form-control" id="password" placeholder="Introduza su contraseña" name="password" required>
-              </div>
+              <input type="password" class="form-control" id="password" placeholder="Introduza su contraseña" name="password" required>
             </div>
-            <button type="submit" class="btn btn btn-block" style="background-color: #4F46E5; color: white;">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
             <hr>
           </form>
           <a href='{% url "social:begin" "google-oauth2" %}' class="btn btn-google btn-block"><i class="fab fa-google"></i> Iniciar con Google</a>
@@ -87,5 +37,6 @@
     </div>
   </div>
 </div>
+
 </body>
 </html>
