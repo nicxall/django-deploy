@@ -90,4 +90,8 @@ def completetask(request,pk):
 	tasks.date_completed = timezone.now()
 	tasks.save()
 	return redirect('home')
+
+def UserCloseSession(request):
+	logout(request)
+	return redirect('signinapi')
 	

@@ -9,5 +9,6 @@ urlpatterns = [
 	path('task/list/', views.Tasklist, name = 'tasklist'),
 	path('task/detail/<int:pk>/', views.taskdetail, name='taskdetail'),
 	path('delete/task/<int:id>', views.DeleteTask, name='deletetask'),
-	path('completed/task/<int:pk>', views.completetask, name='complete')
+	path('completed/task/<int:pk>', views.completetask, name='complete'),
+	path('logout/', UserCloseSession, name = 'logout'),
 ]
