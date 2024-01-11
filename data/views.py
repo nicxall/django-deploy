@@ -8,6 +8,7 @@ from rest_framework.decorators import action
 from rest_framework import generics, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets
 
 # serializer importados
 from .serializers import UserSerializer
@@ -30,15 +31,14 @@ class UserSession(APIView):
         return redirect('home')
 
 
-class CreateTask(APIView):
+class CreateTask(viewsets.ModelViewSet):
     # Define el conjunto de objetos sobre el que operará la vista
     queryset = task.objects.all()
     # Especifica el serializador que se utilizará para validar y deserializar datos
     serializer_class = UserSerializer
 
-    # Este método se llama automáticamente cuando se crea un nuevo objeto
-    @action(detail=False, action='post')
-    def perform_create(self, serializer):
+    # Este método se llama automáticamente cuando se crea un nuevo objetoaction(detail=False, action='post')
+    def post(self, serializer):
         # Guarda el objeto serializado en la base de datos, asignando el usuario actual
         serializer.save(user=self.request.user)
         # Redirige a la vista 'home' después de guardar el objeto
