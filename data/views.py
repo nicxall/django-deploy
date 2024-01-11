@@ -28,11 +28,20 @@ class UserSession(APIView):
         	return render(request,'signin.html')
         login(request, AuthenticateUser)
         return redirect('home')
-@api_view(['POST'])
+
+
 class CreateTask(APIView):
-    queryset = task.objects.all()
+    # Define el conjunto de objetos sobre el que operará la vista
+    queryset = Task.objects.all()
+    # Especifica el serializador que se utilizará para validar y deserializar datos
     serializer_class = UserSerializer
+
+    # Este método se llama automáticamente cuando se crea un nuevo objeto
+    @action(detail=False, action='post')
     def perform_create(self, serializer):
-        serializer.save(user = self.request.user)
+        # Guarda el objeto serializado en la base de datos, asignando el usuario actual
+        serializer.save(user=self.request.user)
+        # Redirige a la vista 'home' después de guardar el objeto
         return redirect('home')
+
 
