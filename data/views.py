@@ -28,7 +28,7 @@ class UserSession(APIView):
         	return render(request,'signin.html')
         login(request, AuthenticateUser)
         return redirect('home')
-
+@api_view(['POST'])
 class CreateTask(APIView):
     queryset = task.objects.all()
     serializer_class = UserSerializer
