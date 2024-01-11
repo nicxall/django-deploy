@@ -30,10 +30,9 @@ class UserSession(APIView):
         return redirect('home')
 
 class CreateTask(APIView):
-    def post(self, request, *args, **kwargs):
-        queryset = task.objects.all()
-        serializer_class = UserSerializer
-        def perform_create(self, serializer):
-            serializer.save(user = self.request.user)
-            return redirect('home')
+    queryset = task.objects.all()
+    serializer_class = UserSerializer
+    def perform_create(self, serializer):
+        serializer.save(user = self.request.user)
+        return redirect('home')
 
