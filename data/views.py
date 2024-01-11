@@ -32,7 +32,7 @@ class UserSession(APIView):
 
 class CreateTask(APIView):
     # Define el conjunto de objetos sobre el que operará la vista
-    queryset = Task.objects.all()
+    queryset = task.objects.all()
     # Especifica el serializador que se utilizará para validar y deserializar datos
     serializer_class = UserSerializer
 
