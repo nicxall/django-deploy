@@ -38,7 +38,7 @@ class CreateTask(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     # Este método se llama automáticamente cuando se crea un nuevo objetoaction(detail=False, action='post')
-    def post(self, serializer):
+    def perform_create(self, serializer):
         # Guarda el objeto serializado en la base de datos, asignando el usuario actual
         serializer.save(user=self.request.user)
         # Redirige a la vista 'home' después de guardar el objeto
