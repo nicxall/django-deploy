@@ -31,7 +31,7 @@ class UserSession(APIView):
         return redirect('home')
 
 
-class CreateTask(viewsets.ModelViewSet):
+class CreateTask(APIView):
     # Define el conjunto de objetos sobre el que operará la vista
     queryset = task.objects.all()
     # Especifica el serializador que se utilizará para validar y deserializar datos
