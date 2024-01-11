@@ -168,3 +168,10 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
 LOGIN_URL_REDIRECT = 'home'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'https://note-x.onrender.com/',
+    }
+}
