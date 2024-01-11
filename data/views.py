@@ -9,6 +9,7 @@ from rest_framework import generics, status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
+from .serializers import TaskSerializer
 
 # serializer importados
 from .serializers import UserSerializer
