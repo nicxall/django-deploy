@@ -169,9 +169,3 @@ LOGIN_URL_REDIRECT = 'home'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'https://note-x.onrender.com/',
-    }
-}
