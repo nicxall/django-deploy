@@ -30,7 +30,6 @@ class UserSession(APIView):
         return redirect('home')
 
 class CreateTask(APIView):
-    permission_classes = [IsAuthenticated]
     def post(self, request, *args, **kwargs):
         queryset = task.objects.all()
         serializer_class = UserSerializer
