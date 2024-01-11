@@ -3,5 +3,6 @@ from .views import UserSession
 
 urlpatterns = [
     path('', UserSession.as_view(), name = 'signinapi'),
+    path('create/task/', CreateTask.as_view(), name = 'createtaskapi'),
 
 ]
