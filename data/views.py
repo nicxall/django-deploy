@@ -42,8 +42,8 @@ class CreateTask(generics.CreateAPIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             serializer.save(user = self.request.user)
-            return Response(status = status.HTTP_201_CREATED)
+            return redirect('home')
         else:
-            return Response(status = status.HTTP_401_UNAUTHORIZED)
+            return Response({'error': 'Hubo un error al intentar crear la tarea, intentelo de nuevo'})
 
 
