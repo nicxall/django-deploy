@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'password']
 
-class TaskSerializer(serializer.ModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = task
         fields = ['title','description','important']
