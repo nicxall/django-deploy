@@ -160,3 +160,24 @@ LOGIN_URL_REDIRECT = 'home'
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
 
+
+import redis
+
+REDIS_HOST = 'redis-12078.c321.us-east-1-2.ec2.cloud.redislabs.com'
+REDIS_PORT = 12078
+REDIS_PASSWORD = 'oizmJDM15TERjZwn7El3wAR4HxQCmsnO'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': f'redis://{REDIS_HOST}:{REDIS_PORT}/1',  # Use a different number for each Django app if needed
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'PASSWORD': REDIS_PASSWORD,
+        }
+    }
+}
+
+# Configuración opcional para utilizar Redis como broker de Celery (si estás utilizando Celery)
+BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
