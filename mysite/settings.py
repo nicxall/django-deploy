@@ -178,6 +178,4 @@ CACHES = {
     }
 }
 
-# Configuración opcional para utilizar Redis como broker de Celery (si estás utilizando Celery)
-BROKER_URL = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
-CELERY_RESULT_BACKEND = f'redis://{REDIS_HOST}:{REDIS_PORT}/0'
+

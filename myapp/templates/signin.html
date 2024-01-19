@@ -89,7 +89,6 @@
 <body>
   <div class="container">
     <h2>Iniciar Sesión</h2>
-    {% cache 120 "signin_form" %}
     <form action="{% url 'signinapi' %}" method="POST">
         {% csrf_token %}
       <label for="username">Usuario</label>
@@ -100,7 +99,6 @@
 
       <button type="submit">Iniciar Sesión</button>
     </form>
-    {% endcache %}
     <!-- Botón de acceso mediante Google -->
     <a href='{% url "social:begin" "google-oauth2" %}' class="google-btn" style="text-decoration: none;">
       <i class="fab fa-google google-icon"></i>
