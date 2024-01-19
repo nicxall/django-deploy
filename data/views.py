@@ -14,12 +14,10 @@ from django.views.decorators.cache import cache_page
 # serializer importados
 from .serializers import UserSerializer
 from myapp.models import task
-from django.core.cache import cache
 
 class UserSession(APIView):
     serializer_class = UserSerializer
     def get(self,request):
-        cache.set('signin', render(request,'signin.html'), timeout=120)
         return render(request,'signin.html')
     	
     def post(self, request,*args,**kwargs):
