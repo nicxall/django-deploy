@@ -10,14 +10,14 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from .serializers import TaskSerializer
-
+from django.views.decorators.cache import cache_page
 # serializer importados
 from .serializers import UserSerializer
 from myapp.models import task
 
 class UserSession(APIView):
     serializer_class = UserSerializer
-
+    @cache_page(150)
     def get(self,request):
     	return render(request,'signin.html')
     	
