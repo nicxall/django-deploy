@@ -20,7 +20,7 @@ class UserSession(APIView):
     serializer_class = UserSerializer
     def get(self,request):
         cache.set('signin', render(request,'signin.html'), timeout=120)
-    	return render(request,'signin.html')
+        return render(request,'signin.html')
     	
     def post(self, request,*args,**kwargs):
         username = request.data.get('username')
