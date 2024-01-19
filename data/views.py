@@ -18,9 +18,8 @@ from django.core.cache import cache
 
 class UserSession(APIView):
     serializer_class = UserSerializer
-    @cache_page(150)
     def get(self,request):
-        cache.set("signin", render(request, "signin.html"), timeout=120)
+        cache.set('signin', render(request,'signin.html'), timeout=120)
     	return render(request,'signin.html')
     	
     def post(self, request,*args,**kwargs):
@@ -32,9 +31,6 @@ class UserSession(APIView):
         	return render(request,'signin.html')
         login(request, AuthenticateUser)
         return redirect('home')
-
-
-
 
 class CreateTask(generics.CreateAPIView):
     queryset = task.objects.all()
