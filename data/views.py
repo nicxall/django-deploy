@@ -15,20 +15,44 @@ from django.views.decorators.cache import cache_page
 from .serializers import UserSerializer
 from myapp.models import task
 
-class UserSession(APIView):
-    serializer_class = UserSerializer
-    def get(self,request):
-        return render(request,'signin.html')
-    	
-    def post(self, request,*args,**kwargs):
+class AuthenticationViewFactory:
+    @staticmethod
+    def create_view(auth_type):
+        if auth_type == 'signup':
+            return SignUpView.as_view()
+        elif auth_type == 'signin':
+            return SignInView.as_view()
+        elif auth_type == 'logout':
+            return LogoutView.as_view()
+        else:
+            raise ValueError(f"Unsupported authentication type: {auth_type}")
+
+class SignUpView(APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            login(request, user)
+            return redirect('home')
+            # Implement your user registration logic here
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SignInView(APIView):
+    def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
-        
-        AuthenticateUser = authenticate(username = username, password = password)
-        if AuthenticateUser is None:
-        	return render(request,'signin.html')
-        login(request, AuthenticateUser)
+        authenticate_user = authenticate(username = username, password = password)
+        if authenticate_user is None:
+            return render(request,'signin.html')
+        login(request, authenticate_user)
         return redirect('home')
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        login(request)
+        return render(request,'signin.html')
+
 
 class CreateTask(generics.CreateAPIView):
     queryset = task.objects.all()
