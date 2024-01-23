@@ -1,6 +1,7 @@
 from django.urls import path
 from myapp import views
 from myapp.views import TaskCreate, home
+
 urlpatterns = [
 	path('signup/', views.signup , name='signup'),
 	path('accounts/logout/', views.UserCloseSession, name='logout'),

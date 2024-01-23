@@ -28,6 +28,8 @@ class AuthenticationViewFactory:
             raise ValueError(f"Unsupported authentication type: {auth_type}")
 
 class SignUpView(APIView):
+    def get(self, request):
+        return render(request,'signup.html')
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -38,6 +40,8 @@ class SignUpView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class SignInView(APIView):
+    def get(self, request):
+        return render(request,'signin.html')
     def post(self, request):
         username = request.data.get('username')
         password = request.data.get('password')
